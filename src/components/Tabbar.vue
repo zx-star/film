@@ -26,6 +26,7 @@
     }
     .icon-all{
         font-size: 28px;
+        font-weight: 100;
     }
     nav{
         box-sizing: border-box;
