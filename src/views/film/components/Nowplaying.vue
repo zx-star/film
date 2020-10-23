@@ -1,12 +1,10 @@
 <template>
-  <div>
+  <div class="container">
     <ul>
       <li v-for="data in datalist" :key="data.filmId" >
         <div class="film-img">
           <img :src="data.poster" alt="">
         </div>
-          
-        
         <div class="film-content">
           <div><span class="film-title">{{data.name}}</span><span class="film-effect">{{data.item.name}}</span></div>
           <div><span>观众评分<span class="film-grade">{{data.grade}}</span></span></div>
@@ -18,7 +16,7 @@
           </div>
       </li>
     </ul>
-    <div  class="film-occupy"></div>
+    <!-- <div  class="film-occupy"></div> -->
   </div>
 </template>
 
@@ -54,9 +52,9 @@ export default {
                   'X-Host': 'mall.film-ticket.film.list'
               }
           }).then(res=>{
-              console.log(res.data)
+              // console.log(res.data)
               this.datalist=res.data.data.films
-              console.log(this.datalist)
+              // console.log(this.datalist)
               // this.datalist=[...this.datalist,...res.data.data.films];
               // this.total = res. data.data.total
           })
@@ -73,6 +71,7 @@ export default {
             padding: 1rem;
             overflow: hidden;
             max-height: 130px;
+            background-color: white;
             border-bottom: 1px solid #f3f3f3;
             .film-img{
               flex: 0.6;
@@ -130,8 +129,12 @@ export default {
             }
         }
     }
-    .film-occupy{
-      height: 3.75rem;
-      background: #f4f4f4;
+    // .film-occupy{
+    //   height: 3.75rem;
+    //   background: #f4f4f4;
+    // }
+    .container{
+      padding-bottom: 3.75rem;
+      background-color: #f4f4f4;
     }
 </style>
