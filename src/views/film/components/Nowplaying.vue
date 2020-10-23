@@ -79,11 +79,13 @@ export default {
               padding-right:0.8rem;
               img{
                 // float: left;
-                width: 100%;           
+                width: 100%;   
+                       
               }
             }
             .film-content{
               flex: 2;
+             
               span{
                 font-size: 0.81rem;
                 color: #191a1b;

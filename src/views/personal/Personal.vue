@@ -111,6 +111,7 @@ export default {
     align-items:center;
     position: relative;
     border-bottom: 1px solid #ddd;
+    cursor: pointer;
     .icon-maiquan{
       font-size: 1.5rem;
       margin: 0 0.5rem;
