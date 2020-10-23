@@ -2,8 +2,10 @@
   <div>
     <ul>
       <li v-for="data in datalist" :key="data.filmId" >
-        
+        <div class="film-img">
           <img :src="data.poster" alt="">
+        </div>
+          
         
         <div class="film-content">
           <div><span class="film-title">{{data.name}}</span><span class="film-effect">{{data.item.name}}</span></div>
@@ -72,14 +74,20 @@ export default {
             display: flex;
             padding: 1rem;
             overflow: hidden;
+            max-height: 130px;
             border-bottom: 1px solid #f3f3f3;
-            img{
-                float: left;
-                width: 18.5vw;
-                padding-right:0.8rem;
-                // flex: 0.5;
+            .film-img{
+              flex: 0.6;
+              max-width: 5.8rem;
+              padding-right:0.8rem;
+              img{
+                // float: left;
+                width: 100%;           
+              }
             }
-            span{
+            .film-content{
+              flex: 2;
+              span{
                 font-size: 0.81rem;
                 color: #191a1b;
                 font-weight: 200;
@@ -106,13 +114,9 @@ export default {
               color: #ffb232;
               font-weight: 400;
             }
-            .film-content{
-              float: left;
-              // width: ;
-              flex: 2;
             }
             .film-buy{
-              float: right;
+              // float: right;
               height: 1.5rem;
               line-height: 1.5rem;
               width: 3rem;
@@ -122,6 +126,7 @@ export default {
               color: #ff5f16;
               border-radius: 0.2rem;
               flex: 0.5;
+              max-width: 50px;
               align-self:center;
               cursor: pointer;
             }
