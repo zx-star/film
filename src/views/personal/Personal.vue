@@ -55,6 +55,7 @@ export default {
 <style lang="scss" scoped>
 .container{
   background-color: #f4f4f4;
+  height: 100vh;
   // background-image:#f4f4f4;
   // height: 1000px;
 }
