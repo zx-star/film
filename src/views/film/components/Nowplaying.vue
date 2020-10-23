@@ -8,7 +8,7 @@
         <div class="film-content">
           <div><span class="film-title">{{data.name}}</span><span class="film-effect">{{data.item.name}}</span></div>
           <div><span>观众评分<span class="film-grade">{{data.grade}}</span></span></div>
-          <div><span>主演:{{data.actors | actorfilter}}</span></div>
+          <div class="film-actor"><span>主演:{{data.actors | actorfilter}}</span></div>
           <div><span>{{data.nation}}&nbsp;|&nbsp;{{data.runtime}}分钟</span></div>
         </div>
           <div class="film-buy"> 
@@ -85,34 +85,33 @@ export default {
             }
             .film-content{
               flex: 2;
-             
               span{
                 font-size: 0.81rem;
                 color: #191a1b;
                 font-weight: 200;
-            }
-            .film-title{
-                font-size: 1rem;
-                font-weight:500;
-            }
-            .film-effect{
-                display: inline-block;
-                vertical-align: middle;
-                font-size: 0.56rem;
-                color: white;
-                height: 0.87rem;
-                line-height: 0.87rem;
+              }
+              .film-title{
+                  font-size: 1rem;
+                  font-weight:500;
+              }
+              .film-effect{
+                  display: inline-block;
+                  vertical-align: middle;
+                  font-size: 0.56rem;
+                  color: white;
+                  height: 0.87rem;
+                  line-height: 0.87rem;
+                  font-weight: 400;
+                  background-color: #d2d6dc;
+                  padding: 0 0.18rem;
+                  margin: 0 0.3rem;
+                  border-radius: 2px;
+              }
+              .film-grade{
+                font-size: 0.92rem;
+                color: #ffb232;
                 font-weight: 400;
-                background-color: #d2d6dc;
-                padding: 0 0.18rem;
-                margin: 0 0.3rem;
-                border-radius: 2px;
-            }
-            .film-grade{
-              font-size: 0.92rem;
-              color: #ffb232;
-              font-weight: 400;
-            }
+              }
             }
             .film-buy{
               // float: right;
