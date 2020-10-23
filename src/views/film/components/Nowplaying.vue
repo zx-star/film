@@ -18,9 +18,7 @@
           </div>
       </li>
     </ul>
-    <div  class="film-occupy">
-
-    </div>
+    <div  class="film-occupy"></div>
   </div>
 </template>
 
