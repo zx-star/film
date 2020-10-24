@@ -87,8 +87,8 @@ export default {
               flex: 2;
               span{
                 font-size: 0.81rem;
-                color: #191a1b;
-                font-weight: 200;
+                // color: #191a1b;
+                font-weight: 300;
               }
               .film-title{
                   font-size: 1rem;
@@ -110,7 +110,7 @@ export default {
               .film-grade{
                 font-size: 0.92rem;
                 color: #ffb232;
-                font-weight: 400;
+                font-weight: 800;
               }
             }
             .film-buy{
