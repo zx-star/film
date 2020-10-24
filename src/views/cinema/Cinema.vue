@@ -91,6 +91,7 @@ export default {
               text-overflow: ellipsis;
               overflow: hidden;
               white-space: nowrap;
+              // word-wrap: initial;
               color: #797d82;
             }
             .cinema-title{
