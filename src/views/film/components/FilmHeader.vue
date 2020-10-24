@@ -20,6 +20,7 @@ export default {
     ul{
         display: flex;
         justify-content:space-around;
+        background-color: white;
         li{
             height: 3rem;
             line-height: 3rem;
@@ -30,5 +31,12 @@ export default {
     .active{
         color: rgb(248, 90, 17);
         border-bottom: 2px solid  rgb(243, 117, 59);
+    }
+    .film-header-fixed{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        // background: white;
     }
 </style>

@@ -1,7 +1,12 @@
 <template>
   <div class="container">
     <ul>
-      <li v-for="data in datalist" :key="data.filmId" >
+      <router-link 
+        tag="li"
+        v-for="data in datalist" 
+        :key="data.filmId"
+        :to=" '/detail/' + data.filmId"
+        >
         <div class="film-img">
           <img :src="data.poster" alt="">
         </div>
@@ -11,12 +16,11 @@
           <div class="film-actor"><span>主演:{{data.actors | actorfilter}}</span></div>
           <div><span>{{data.nation}}&nbsp;|&nbsp;{{data.runtime}}分钟</span></div>
         </div>
-          <div class="film-buy"> 
+          <router-link tag="div"  class="film-buy" :to="'/Personal'"> 
             购票
-          </div>
-      </li>
+          </router-link>
+      </router-link>
     </ul>
-    <!-- <div  class="film-occupy"></div> -->
   </div>
 </template>
 
@@ -35,13 +39,10 @@ export default {
   data() {
     return {
       datalist:[],
-
     }
   },
   mounted(){
-      this.getdata()
-        
-       
+      this.getdata()     
     },
   methods: {
     getdata () {
@@ -58,7 +59,7 @@ export default {
               // this.datalist=[...this.datalist,...res.data.data.films];
               // this.total = res. data.data.total
           })
-     }
+     },
 }
 }
 

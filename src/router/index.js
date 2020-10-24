@@ -5,8 +5,8 @@ import Cinema from '@/views/cinema/Cinema'
 import Personal from '@/views/personal/Personal'
 import Nowplaying from '@/views/film/components/Nowplaying'
 import Comingsoon from '@/views/film/components/Comingsoon'
-import Detail from '@/views/Detail'
-
+import FilmDetail from '@/views/film/FilmDetail'
+// import FilmDetail from '@/views/film/components/FilmDetail'
 Vue.use(VueRouter)
 
 const routes = [
@@ -29,9 +29,9 @@ const routes = [
     ]
   },
   {
-    path: '/detail/:myid', //动态路由
+    path: '/detail/:id', //动态路由
     name: 'stardetail',
-    component: Detail
+    component: FilmDetail
   },
   {
     path: '/cinema',
