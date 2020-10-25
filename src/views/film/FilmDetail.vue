@@ -2,6 +2,7 @@
     <div class="container">
        <detail-content :contentlist="contentlist" :effectname="effectname"></detail-content> 
         <detail-swiper :contentlist="contentlist"></detail-swiper> 
+        <second-dswiper :contentlist="contentlist"></second-dswiper> 
         <div class="buy">选座购票</div>
     </div>
 </template>
@@ -10,6 +11,7 @@
 import axios from 'axios'
 import DetailContent from './components/Detailcontent'
 import DetailSwiper from './components/DetilSwiper'
+import SecondDswiper from './components/SecondDswiper'
 export default {
     name:"Detail",
     props: {
@@ -22,7 +24,8 @@ export default {
     },
     components: {
         DetailContent,
-        DetailSwiper
+        DetailSwiper,
+        SecondDswiper
     },
     computed: {
         myid() {
@@ -65,7 +68,7 @@ export default {
     .container{
         box-sizing: border-box;
         padding-bottom: 3rem;
-        // background-color: green;
+        background-color: #f4f4f4;
     }
     .buy{
         position: fixed;

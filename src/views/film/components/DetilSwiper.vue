@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="containertwo">
         <div class="title">演职人员</div>
         <div class="wrapper" v-if="contentlist">
             <swiper  ref="mySwiper" :options="swiperOptions">
@@ -24,15 +24,11 @@ export default {
       },
   data() {
       return {
-          imgUrlList:[{id:"0001",imgUrl:'https://pic.maizuo.com/usr/movie/fad9f1e9a5c38f3883d7f9b5e561e5fe.jpg'},
-          {id:"0002",imgUrl:'https://static.maizuo.com/pc/v5/usr/movie/7cdc1831fb22cf2f9d2bef30d6010f14.jpg'},
-          {id:"0003",imgUrl:'https://static.maizuo.com/pc/v5/usr/movie/7cdc1831fb22cf2f9d2bef30d6010f14.jpg'},
-          ],
           swiperOptions: {
         //   pagination: '.swiper-pagination',
             slidesPerView: 4,
             paginationClickable: true,
-            spaceBetween: 20,
+            spaceBetween: 10,
             freeMode: true
         }
       }
@@ -43,11 +39,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .container{
-        box-sizing: border-box;
+    .containertwo{
         padding-bottom: 0.5rem;
-        // background-color: red;
-        // border: 1px solid red;
+        background-color: #f4f4f4;
+
     }
     .title{
         padding: 0.5rem;
@@ -58,11 +53,12 @@ export default {
         overflow:hidden;
         width:100%;
         height:0;
-        padding-bottom:40%;//相对于宽度的31.25%
+        padding-bottom:40%;
         // margin: 0 0.5rem;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
         box-sizing: border-box;
+        // border: 1px solid;
         .swiper-img{
             width:100%;
             // height:50px;
