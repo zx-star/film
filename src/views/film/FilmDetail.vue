@@ -2,7 +2,8 @@
     <div class="container">
        <detail-content :contentlist="contentlist" :effectname="effectname"></detail-content> 
         <detail-swiper :contentlist="contentlist"></detail-swiper> 
-        <second-dswiper :contentlist="contentlist"></second-dswiper> 
+        <second-dswiper :contentlist="contentlist"></second-dswiper>
+        <detail-header :contentlist="contentlist"></detail-header> 
         <div class="buy">选座购票</div>
     </div>
 </template>
@@ -12,6 +13,7 @@ import axios from 'axios'
 import DetailContent from './components/Detailcontent'
 import DetailSwiper from './components/DetilSwiper'
 import SecondDswiper from './components/SecondDswiper'
+import DetailHeader from './components/DetailHeader'
 export default {
     name:"Detail",
     props: {
@@ -25,7 +27,8 @@ export default {
     components: {
         DetailContent,
         DetailSwiper,
-        SecondDswiper
+        SecondDswiper,
+        DetailHeader
     },
     computed: {
         myid() {

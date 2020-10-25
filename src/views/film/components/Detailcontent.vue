@@ -117,7 +117,7 @@ export default {
             border-radius: 2px;
         }
         .detail-grade{
-        font-size: 0.92rem;
+        font-size: 1.2rem;
         text-align: center;
         color: #ffb232;
         font-weight: 800;
