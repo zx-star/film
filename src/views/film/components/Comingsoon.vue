@@ -1,7 +1,12 @@
 <template>
   <div>
     <ul>
-      <li v-for="data in datalist" :key="data.filmId" >
+      <router-link  
+        tag="li"
+        v-for="data in datalist" 
+        :key="data.filmId" 
+        :to=" '/detail/' + data.filmId"
+        >
         <div class="film-img">
           <img :src="data.poster" alt="">
         </div>
@@ -14,7 +19,7 @@
           <div class="film-buy" v-show="data.isPresale"> 
             预购
           </div>
-      </li>
+      </router-link >
     </ul>
     <div  class="film-occupy">
 
@@ -37,13 +42,14 @@ export default {
   data() {
     return {
       datalist:[],
-      isPresale:false
+      isPresale:false,
     }
   },
+   beforeMount () {
+    this.$store.commit("detailBack","comingsoon");
+  },
   mounted(){
-      this.getdata()
-        
-       
+      this.getdata()   
     },
   methods: {
     getdata () {

@@ -41,6 +41,9 @@ export default {
       datalist:[],
     }
   },
+  beforeMount () {
+    this.$store.commit("detailBack","nowplaying");
+  },
   mounted(){
       this.getdata()     
     },

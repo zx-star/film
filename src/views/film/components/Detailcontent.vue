@@ -1,7 +1,9 @@
 <template>
   <div class="detail-container">
       <div class="detail-img">
-          <div class="back-icon"><span class="iconfont">&#xe749;</span></div>
+        <router-link tag="div" class="back-icon" :to="backaddressnew">
+          <span class="iconfont">&#xe749;</span>
+        </router-link>
           <img :src="contentlist.poster" alt="">
         </div>
         <div class="detail-content">
@@ -21,17 +23,20 @@ export default {
   name:"Detailcontent",
   props: {
       contentlist: Object,
-      effectname:String
+      effectname:String,
+      backaddress:null,
   },
   data() {
     return {
-
-        
     }
+    
   },
-computed: {
-
-},
+  computed: {
+      backaddressnew() {
+        var newaddress = '/film/'+this.$store.state.detailBack
+        return newaddress
+      }
+    },
   mounted () {
   },
   beforeDestroy(){
