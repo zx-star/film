@@ -36,6 +36,7 @@ export default {
     },
   methods: {
       handleScroll() {
+          console.log('scroll')
           // 防止某些手机浏览器不兼容"document.documentElement.scrollTop"
           const top = document.documentElement.scrollTop || document.body.scrollTop ||  window.pageYOffset
           if (top > 60) {
@@ -51,10 +52,11 @@ export default {
       }
   },
   mounted () {
-      window.addEventListener('scroll',this.handleScroll)
+    //   window.addEventListener('scroll',this.handleScroll)
+      
   },
-  destroyed(){
-      window.removeEventListener('scroll',this.handleScroll)
+  beforeDestroy(){
+    //   window.removeEventListener('scroll',this.handleScroll)
   }
 
   }

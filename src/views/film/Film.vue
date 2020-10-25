@@ -21,10 +21,10 @@ export default {
     FilmHeader
   },
   mounted () {
-    window.onscroll = this.handleScroll;
+    // window.onscroll = this.handleScroll;
   },
   beforeDestroy(){
-        window.onscroll = null;
+        // window.onscroll = null;
   },
   methods: {
     handleScroll() {
