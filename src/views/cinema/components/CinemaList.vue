@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="content-all" :style="mystyle">
     <ul>
       <li v-for="data in datalist" :key="data.cinemaId" >
         <div class="cinama-content">
@@ -19,6 +19,8 @@
 <script>
 import Vue from 'vue'
 import axios from 'axios'
+import BetterScroll from 'better-scroll'
+
 
 Vue.filter("CinemaPrice",function(data){
     var price = Math.floor(data/100)
@@ -36,10 +38,13 @@ export default {
   data() {
     return {
       datalist:[],
+      mystyle:{height:"0px"}
+
     }
   },
   mounted(){
-      this.getdata()     
+      this.getdata()
+      this.mystyle.height = document.documentElement.clientHeight-100+"px"
     },
   methods: {
     getdata () {
@@ -53,8 +58,18 @@ export default {
               console.log(res.data)
               this.datalist=res.data.data.cinemas
               console.log(this.datalist)
-              // this.datalist=[...this.datalist,...res.data.data.films];
-              // this.total = res. data.data.total
+              
+              this.$nextTick(()=>{
+                new BetterScroll(".content-all",{
+                  // scrollbar: true,
+                  scrollbar:{
+                      fade:true,
+                      interactive:false
+                  }
+                  // pullDownRefresh: true
+                })
+              })
+
           })
      }
 }
@@ -116,8 +131,11 @@ export default {
         
       }
     }
-    .container{
+    .content-all{
       margin-bottom: 3.75rem;
       background-color: #f4f4f4;
+      height: 80vh;
+      overflow: hidden;
+      position: relative;
     }
 </style>

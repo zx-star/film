@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="Cinema-content">
     <cinema-header></cinema-header>
     <cinema-list></cinema-list>
   </div>

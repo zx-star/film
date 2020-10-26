@@ -57,6 +57,8 @@ export default {
    .header{
         display:flex;
         height:3.5rem;
+        top:0;
+        left: 0;
         width: 100%;
         box-sizing: border-box;
         overflow: hidden;
