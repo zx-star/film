@@ -1,7 +1,11 @@
 <template>
   <div class="content-all" :style="mystyle">
     <ul>
-      <li v-for="data in $store.state.cinemaList" :key="data.cinemaId" >
+      <router-link 
+        tag="li" 
+        v-for="data in $store.state.cinemaList" 
+        :key="data.cinemaId"
+        :to="'/cinemadetail/' + data.cinemaId" >
         <div class="cinama-content">
           <div class="cinema-left">
             <span class="cinema-title">{{data.name}}</span>
@@ -11,7 +15,7 @@
             ￥{{data.lowPrice | CinemaPrice}}.<span class="cinema-privelow">{{data.lowPrice | CinemaPricelow}}&nbsp;起</span> 
           </div>
         </div>
-      </li>
+      </router-link>
     </ul>
   </div>
 </template>
@@ -60,7 +64,8 @@ export default {
                   scrollbar:{
                       fade:true,
                       interactive:false
-                  }
+                  },
+                  click:true
                 })
               })
     },

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Film from '@/views/film/Film'
 import Cinema from '@/views/cinema/Cinema'
+import CinemaDetail from '@/views/cinema/CinemaDetail'
 import Personal from '@/views/personal/Personal'
 import Nowplaying from '@/views/film/components/Nowplaying'
 import Comingsoon from '@/views/film/components/Comingsoon'
@@ -38,6 +39,11 @@ const routes = [
     path: '/cinema',
     name: 'Cinema',
     component: Cinema
+  },
+  {
+    path: '/cinemadetail/:id',
+    name: 'CinemaDetail',
+    component: CinemaDetail
   },
   {
     path: '/personal',
