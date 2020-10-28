@@ -9,6 +9,7 @@
 <script>
 import Swiper from './components/Swiper'
 import FilmHeader from './components/FilmHeader'
+import { Indicator } from 'mint-ui';
 export default {
   name:"Film",
   data() {
@@ -22,6 +23,7 @@ export default {
   },
   mounted () {
     window.onscroll = this.handleScroll;
+    
   },
   beforeDestroy(){
         window.onscroll = null;
@@ -30,12 +32,14 @@ export default {
     handleScroll() {
       if(document.documentElement.scrollTop >= this.$refs.myswiper.$el.offsetHeight){
                 this.isFixed = true;
-                console.log("true")
+                // console.log("true")
             }else{
                 this.isFixed = false;
         }
     }
+    
   },
+  
 }
 </script>
 

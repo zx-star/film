@@ -4,12 +4,14 @@
      <div class="iconfont back-icon">&#xe675;</div>
    </div>
    <div class="header-input">
+     
      <span class="iconfont">&#xe650;</span>
-     输入影院名称
+     <!-- 输入影院名称 -->
+     <input type="text" class="really-input" placeholder="输入影院名称">
      </div>
-     <router-link to=''>
+     <router-link to='/City'>
         <div class="header-right">
-          北京
+          {{this.$store.state.cityName}}
           <span class="iconfont arrow-icon">&#xe649;</span>
         </div>
      </router-link>
@@ -81,15 +83,29 @@ export default {
         }
         .header-input{
             flex-grow:1;
-            height:2.5rem;
-            line-height: 2.5rem;
+            height:2.2rem;
+            line-height: 2.2rem;
             padding-left: .4rem;
             margin: 0 0.5rem;
             border: 0;
             background-color: white;
-            border-radius: 0.2rem;
+            border-radius: 1rem;
             color:#e2e2e2;
             cursor: pointer;
+            position: relative;
+            .really-input{
+              height: 2.2rem;
+              width: 80%;
+              // line-height: 2rem;
+              border: 0;
+              border-top-right-radius: 1rem;
+              border-bottom-right-radius: 1rem;
+              margin-left: 0.2rem;
+              position: absolute;
+              top: 0;
+              outline:none;
+              // color:#e2e2e2;
+            }
         }
         .header-right{  
             min-width :1.2rem;

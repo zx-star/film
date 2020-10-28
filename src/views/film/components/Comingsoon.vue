@@ -1,9 +1,14 @@
 <template>
   <div>
-    <ul>
+    <ul
+      v-infinite-scroll="loadMore"
+      infinite-scroll-disabled="loading"
+      infinite-scroll-distance="0"
+      infinite-scroll-immediate-check=false
+      >
       <router-link  
         tag="li"
-        v-for="data in datalist" 
+        v-for="data in $store.state.comingList" 
         :key="data.filmId" 
         :to=" '/detail/' + data.filmId"
         >
@@ -13,10 +18,10 @@
         <div class="film-content">
           <div><span class="film-title">{{data.name}}</span><span class="film-effect">{{data.item.name}}</span></div>
           <div><span>观众评分<span class="film-grade">{{data.grade}}</span></span></div>
-          <div><span>主演:{{data.actors | actorfilter}}</span></div>
+          <div><span>主演:{{data | actorfilter}}</span></div>
           <div><span>{{data.nation}}&nbsp;|&nbsp;{{data.runtime}}分钟</span></div>
         </div>
-          <div class="film-buy" v-show="data.isPresale"> 
+          <div class="film-buy" v-show="data.isPresale" @click="handleTips()"> 
             预购
           </div>
       </router-link >
@@ -30,10 +35,13 @@
 <script>
 import Vue from 'vue'
 import axios from 'axios'
-
+import { MessageBox } from 'mint-ui';
 Vue.filter("actorfilter",function(data){
-    var newlist = data.map(item=>item.name)
-    // console.log(newlist.join(' '))
+    var err = "暂无"
+    if(data.actors == null){
+      return err
+    }
+    var newlist = data.actors.map(item=>item.name)
     return newlist.join(' ')
 })
 
@@ -43,15 +51,36 @@ export default {
     return {
       datalist:[],
       isPresale:false,
+      loading:false,
     }
   },
    beforeMount () {
     this.$store.commit("detailBack","comingsoon");
   },
   mounted(){
-      this.getdata()   
+      // this.getdata() 
+       if(this.$store.state.comingList.length === 0){
+        //利用vuex发ajax请求
+        // console.log("fasongqingqiu")
+        this.$store.dispatch("commingsoonListAction")      
+        }else{
+          console.log("使用缓存数据")
+        } 
+        // console.log(this.$store.state.comingList)
     },
   methods: {
+      handleTips(){
+        MessageBox('温馨提示', '暂时禁止所有支付行为，请继续浏览电影详情！');
+      },
+      loadMore(){
+      //  console.log("到底了")
+       this.$store.dispatch("nowplayingListAction")
+      //  console.log(this.$store.state.nowplayList.length)
+      //  console.log(this.$store.state.nowplayList)
+       if(this.$store.state.nowplayList.length == this.$store.state.nowplaiingtotal){
+            // this.loading = true
+       }
+      },
     getdata () {
       axios({
               url:"https://m.maizuo.com/gateway?cityId=350300&pageNum=1&pageSize=10&type=2&k=7898608",

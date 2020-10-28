@@ -1,9 +1,14 @@
 <template>
   <div class="container">
-    <ul>
+    <ul
+      v-infinite-scroll="loadMore"
+      infinite-scroll-disabled="loading"
+      infinite-scroll-distance="0"
+      infinite-scroll-immediate-check=false
+      >
       <router-link 
         tag="li"
-        v-for="data in datalist" 
+        v-for="data in $store.state.nowplayList" 
         :key="data.filmId"
         :to=" '/detail/' + data.filmId"
         >
@@ -13,12 +18,12 @@
         <div class="film-content">
           <div><span class="film-title">{{data.name}}</span><span class="film-effect">{{data.item.name}}</span></div>
           <div><span>观众评分<span class="film-grade">{{data.grade}}</span></span></div>
-          <div class="film-actor"><span>主演:{{data.actors | actorfilter}}</span></div>
+          <div class="film-actor"><span>主演:{{data | actorfilter2}}</span></div>
           <div><span>{{data.nation}}&nbsp;|&nbsp;{{data.runtime}}分钟</span></div>
         </div>
-          <router-link tag="div"  class="film-buy" :to="'/Personal'"> 
+          <div class="film-buy"  @click="handleTips()"> 
             购票
-          </router-link>
+          </div>
       </router-link>
     </ul>
   </div>
@@ -27,10 +32,14 @@
 <script>
 import Vue from 'vue'
 import axios from 'axios'
+import { MessageBox } from 'mint-ui';
 
-Vue.filter("actorfilter",function(data){
-    var newlist = data.map(item=>item.name)
-    // console.log(newlist.join(' '))
+Vue.filter("actorfilter2",function(data){
+  var err = "暂无"
+    if(data.actors == null){
+      return err
+    }
+    var newlist = data.actors.map(item=>item.name)
     return newlist.join(' ')
 })
 
@@ -39,30 +48,34 @@ export default {
   data() {
     return {
       datalist:[],
+      loading:false,
     }
   },
   beforeMount () {
     this.$store.commit("detailBack","nowplaying");
+    this.$store.commit("cityBack","/film/nowplaying");
   },
   mounted(){
-      this.getdata()     
+    
+        this.$store.dispatch("commingsoonListAction")  
+        this.$store.dispatch("nowplayingListAction")
+        
+        console.log(this.$store.state.nowplayList.length)
     },
   methods: {
-    getdata () {
-      axios({
-              url:"https://m.maizuo.com/gateway?cityId=110100&pageNum=1&pageSize=10&type=1&k=1820379",
-              headers:{
-                  'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.0.4","e":"16017302651565962255990785"}',
-                  'X-Host': 'mall.film-ticket.film.list'
-              }
-          }).then(res=>{
-              // console.log(res.data)
-              this.datalist=res.data.data.films
-              // console.log(this.datalist)
-              // this.datalist=[...this.datalist,...res.data.data.films];
-              // this.total = res. data.data.total
-          })
-     },
+    handleTips(){
+      MessageBox('温馨提示', '暂时禁止支付行为，请继续浏览电影详情！');
+    },
+     loadMore(){
+       console.log("到底了")
+       this.$store.dispatch("nowplayingListAction")
+      //  console.log(this.$store.state.nowplayList.length)
+      //  console.log(this.$store.state.nowplayList)
+       if(this.$store.state.nowplayList.length == this.$store.state.nowplaiingtotal){
+            // this.loading = true
+       }
+
+     }
 }
 }
 

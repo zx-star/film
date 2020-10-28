@@ -6,7 +6,7 @@
       </div>
       <p>立即登录</p>
     </div>
-    <div class="my-order-tab">
+    <div class="my-order-tab" @click="handleTips()">
       <div>
         <span class="iconfont icon-f">&#xe8ae;</span>
         电影订单
@@ -17,22 +17,22 @@
       </div>
     </div>
     <br/>
-    <div class="my-order-down">
+    <div class="my-order-down" @click="handleTips()">
       <span class="iconfont icon-maiquan">&#xe623;</span>
       <p>卖座券</p>
-      <span class="iconfont icon-in">&#xe605;</span>
+      <span class="iconfont icon-in" >&#xe605;</span>
     </div>
-    <div class="my-order-down">
+    <div class="my-order-down" @click="handleTips()">
       <span class="iconfont icon-hong">&#xe644;</span>
       <p>组合红包</p>
       <span class="iconfont icon-in">&#xe605;</span>
     </div>
-    <div class="my-order-down">
+    <div class="my-order-down" @click="handleTips()">
       <span class="iconfont icon-yu">&#xe6b7;</span>
       <p>余额</p>
       <span class="iconfont icon-in">&#xe605;</span>
     </div>
-    <div class="my-order-down">
+    <div class="my-order-down" @click="handleTips()">
       <span class="iconfont icon-she">&#xe722;</span>
       <p>设置</p>
       <span class="iconfont icon-in">&#xe605;</span>
@@ -41,12 +41,18 @@
 </template>
 
 <script>
+import { MessageBox } from 'mint-ui';
 export default {
     name:"personal",
     data() {
         return {
         Show: true
         }
+    },
+    methods: {
+      handleTips(){
+      MessageBox('温馨提示', '暂时禁止所有支付行为!');
+    },
     },
 
 }

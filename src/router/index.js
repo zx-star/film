@@ -6,6 +6,7 @@ import Personal from '@/views/personal/Personal'
 import Nowplaying from '@/views/film/components/Nowplaying'
 import Comingsoon from '@/views/film/components/Comingsoon'
 import FilmDetail from '@/views/film/FilmDetail'
+import City from '@/views/city/City'
 // import FilmDetail from '@/views/film/components/FilmDetail'
 Vue.use(VueRouter)
 
@@ -42,6 +43,11 @@ const routes = [
     path: '/personal',
     name: 'Personal',
     component: Personal
+  },
+  {
+    path: '/city',
+    name: 'City',
+    component: City
   },
   {
     path: '/about',

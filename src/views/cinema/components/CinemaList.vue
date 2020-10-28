@@ -1,7 +1,7 @@
 <template>
   <div class="content-all" :style="mystyle">
     <ul>
-      <li v-for="data in datalist" :key="data.cinemaId" >
+      <li v-for="data in $store.state.cinemaList" :key="data.cinemaId" >
         <div class="cinama-content">
           <div class="cinema-left">
             <span class="cinema-title">{{data.name}}</span>
@@ -20,6 +20,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import BetterScroll from 'better-scroll'
+import vuex from 'vuex'
 
 
 Vue.filter("CinemaPrice",function(data){
@@ -43,30 +44,51 @@ export default {
     }
   },
   mounted(){
-      this.getdata()
+      // this.getdata()
+      if(this.$store.state.cinemaList.length === 0){
+        //利用vuex发ajax请求
+        this.$store.dispatch("getCinemaListAction")
+    }else{
+      console.log("cinema使用缓存数据")
+    }
       this.mystyle.height = document.documentElement.clientHeight-100+"px"
     },
+
+    updated () {
+      this.$nextTick(()=>{
+                new BetterScroll(".content-all",{
+                  scrollbar:{
+                      fade:true,
+                      interactive:false
+                  }
+                })
+              })
+    },
+
+
   methods: {
+    
     getdata () {
+      var id = localStorage.getItem("cityId")
+      
       axios({
-              url:"https://m.maizuo.com/gateway?cityId=350300&ticketFlag=1&k=7050966",
+              url:`https://m.maizuo.com/gateway?cityId=${id}&ticketFlag=1&k=7050966`,
               headers:{
                   'X-Client-Info': '{"a":"3000","ch":"1002","v":"5.0.4","e":"16017302651565962255990785"}',
                   'X-Host': 'mall.film-ticket.cinema.list'
               }
           }).then(res=>{
+            console.log('1')
               console.log(res.data)
+    console.log('1')
               this.datalist=res.data.data.cinemas
-              console.log(this.datalist)
-              
+              // console.log(this.datalist)
               this.$nextTick(()=>{
                 new BetterScroll(".content-all",{
-                  // scrollbar: true,
                   scrollbar:{
                       fade:true,
                       interactive:false
                   }
-                  // pullDownRefresh: true
                 })
               })
 

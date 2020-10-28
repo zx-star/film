@@ -21,6 +21,10 @@ export default {
     CinemaHeader,
     CinemaList
   },
+  beforeMount () {
+    
+    this.$store.commit("cityBack","/cinema");
+  },
   mounted(){
     //  this.getdata()   
     },
